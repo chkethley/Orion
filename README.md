@@ -20,6 +20,8 @@ Orion is a comprehensive development hub for building and deploying Artificial G
 - **Experiment Tracking**: Integration with MLflow and Weights & Biases
 - **Data Pipelines**: Flexible multi-stage data processing infrastructure
 - **Production-Ready API**: FastAPI-based REST API with comprehensive endpoints
+- **PyTorch Models**: Multiple neural architectures (Transformers, Memory Networks, World Models, RL)
+- **ONNX Export & Inference**: Optimized model deployment with ONNX Runtime
 - **Containerized Deployment**: Docker and Kubernetes support
 - **Comprehensive Testing**: Unit, integration, and end-to-end tests
 
@@ -160,6 +162,7 @@ orion-agi/
 
 - [Getting Started Guide](docs/guides/getting-started.md)
 - [Architecture Overview](docs/architecture/overview.md)
+- [PyTorch & ONNX Guide](docs/guides/pytorch_onnx_guide.md)
 - [API Reference](docs/api/reference.md)
 - [Development Guide](docs/guides/development.md)
 - [Examples](docs/guides/examples.md)
@@ -195,11 +198,47 @@ mypy src/
 ### Training Models
 
 ```bash
-python scripts/training/train.py \
-    --experiment-name my_experiment \
-    --epochs 10 \
-    --learning-rate 0.001 \
-    --use-mlflow
+# Train transformer encoder
+python scripts/training/train_models.py \
+    --model transformer \
+    --epochs 20 \
+    --batch-size 32 \
+    --export-onnx
+
+# Train reasoning network
+python scripts/training/train_models.py \
+    --model reasoning \
+    --epochs 15 \
+    --input-dim 128 \
+    --hidden-dim 256 \
+    --export-onnx
+
+# Train RL agent
+python scripts/training/train_models.py \
+    --model rl \
+    --epochs 100 \
+    --observation-dim 64 \
+    --action-dim 4 \
+    --export-onnx
+
+# Export all models to ONNX
+python scripts/training/export_all_models.py
+```
+
+### ONNX Inference
+
+```bash
+# Run inference with ONNX model
+python scripts/inference/onnx_inference.py \
+    --model-path data/models/onnx/reasoning_network.onnx \
+    --benchmark \
+    --num-runs 1000
+
+# Compare multiple models
+python scripts/inference/onnx_inference.py \
+    --compare-models \
+        data/models/onnx/model1.onnx \
+        data/models/onnx/model2.onnx
 ```
 
 ## API Endpoints
