@@ -25,6 +25,7 @@ Orion is a comprehensive development hub for building and deploying Artificial G
 - **Advanced RL**: DQN, Double DQN, Dueling DQN, SAC, TD3, PPO, A3C, IQN with replay buffers
 - **ONNX Export & Inference**: Optimized model deployment with ONNX Runtime
 - **Model Serving API**: Production-ready REST API for model inference with benchmarking
+- **Interactive Chat Interface**: Web-based chat UI with real-time messaging and model switching
 - **Neural Architecture Search**: DARTS, Evolutionary NAS, Hyperparameter optimization
 - **Multi-Agent Systems**: Collaborative agents, swarm intelligence, auction-based coordination
 - **Comprehensive Benchmarking**: System-wide performance profiling
@@ -91,8 +92,12 @@ make install-dev
 # Run tests
 make test
 
-# Start API server
+# Start main API server
 make serve
+
+# Start chat interface (separate terminal)
+python scripts/start_chat.py
+# Chat will be available at http://localhost:8002
 ```
 
 ## Usage Example
@@ -170,6 +175,7 @@ orion-agi/
 - [Getting Started Guide](docs/guides/getting-started.md)
 - [Architecture Overview](docs/architecture/overview.md)
 - [PyTorch & ONNX Guide](docs/guides/pytorch_onnx_guide.md)
+- [Chat Interface Guide](docs/guides/chat_interface.md)
 - [API Reference](docs/api/reference.md)
 - [Development Guide](docs/guides/development.md)
 - [Examples](docs/guides/examples.md)
@@ -250,6 +256,8 @@ python scripts/inference/onnx_inference.py \
 
 ## API Endpoints
 
+### Main API (Port 8000)
+
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/` | GET | API information |
@@ -261,6 +269,19 @@ python scripts/inference/onnx_inference.py \
 | `/agents/{id}/execute` | POST | Execute agent cycle |
 | `/agents/{id}/memory` | GET | Get memory stats |
 | `/agents/{id}/learning` | GET | Get learning history |
+
+### Chat API (Port 8002)
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Chat interface (HTML) |
+| `/chat` | POST | Send chat message |
+| `/sessions/{id}/history` | GET | Get chat history |
+| `/sessions/{id}` | DELETE | Delete session |
+| `/models` | GET | List available models |
+| `/ws/{id}` | WS | WebSocket chat stream |
+
+See [Chat Interface Guide](docs/guides/chat_interface.md) for detailed usage.
 
 ## Technology Stack
 
