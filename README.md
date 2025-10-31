@@ -20,8 +20,15 @@ Orion is a comprehensive development hub for building and deploying Artificial G
 - **Experiment Tracking**: Integration with MLflow and Weights & Biases
 - **Data Pipelines**: Flexible multi-stage data processing infrastructure
 - **Production-Ready API**: FastAPI-based REST API with comprehensive endpoints
-- **PyTorch Models**: Multiple neural architectures (Transformers, Memory Networks, World Models, RL)
+- **PyTorch Models**: 20+ neural architectures (Transformers, Memory Networks, World Models, RL agents)
+- **Generative Models**: VAE, GAN, Diffusion, Flow Matching, Normalizing Flows
+- **Advanced RL**: DQN, Double DQN, Dueling DQN, SAC, TD3, PPO, A3C, IQN with replay buffers
 - **ONNX Export & Inference**: Optimized model deployment with ONNX Runtime
+- **Model Serving API**: Production-ready REST API for model inference with benchmarking
+- **Neural Architecture Search**: DARTS, Evolutionary NAS, Hyperparameter optimization
+- **Multi-Agent Systems**: Collaborative agents, swarm intelligence, auction-based coordination
+- **Comprehensive Benchmarking**: System-wide performance profiling
+- **Model Zoo**: Pre-configured architectures and training recipes
 - **Containerized Deployment**: Docker and Kubernetes support
 - **Comprehensive Testing**: Unit, integration, and end-to-end tests
 
@@ -258,16 +265,18 @@ python scripts/inference/onnx_inference.py \
 ## Technology Stack
 
 - **Framework**: Python 3.10+
-- **Web API**: FastAPI
-- **ML/AI**: PyTorch, Transformers, LangChain
+- **Web API**: FastAPI (2 separate APIs: Main + Model Serving)
+- **ML/AI**: PyTorch, ONNX, ONNX Runtime, Transformers, LangChain
+- **Models**: 20+ architectures (Transformers, VAE, GAN, Diffusion, DQN, SAC, PPO, etc.)
 - **Experiment Tracking**: MLflow, Weights & Biases
 - **Vector DB**: ChromaDB, Pinecone
 - **Database**: PostgreSQL
 - **Cache/Queue**: Redis, Celery
 - **Monitoring**: Prometheus, Grafana
 - **Containerization**: Docker, Kubernetes
-- **Testing**: Pytest
+- **Testing**: Pytest, comprehensive benchmarking suite
 - **CI/CD**: GitHub Actions
+- **NAS**: DARTS, Evolutionary algorithms, Bayesian optimization
 
 ## Contributing
 
